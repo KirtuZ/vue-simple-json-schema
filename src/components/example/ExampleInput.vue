@@ -36,7 +36,7 @@ defineProps({
 
 const emits = defineEmits(["input"]);
 
-function onInput(event) {
+function onInput(event: Event) {
   emits("input", event);
 }
 </script>

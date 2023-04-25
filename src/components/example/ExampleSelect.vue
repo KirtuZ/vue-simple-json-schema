@@ -1,7 +1,7 @@
 <template>
   <label>
     {{ title }}:
-    <select :name="name" @select="onSelect">
+    <select :name="name">
       <option
         v-for="option in options"
         :value="option"
@@ -35,18 +35,8 @@ const props = defineProps({
     required: true,
   },
 });
-const emits = defineEmits(["select"]);
 
 const state = ref(props.modelValue);
-
-function onSelect(value: string) {
-  console.log("onSelect", value);
-  state.value = value;
-  emits("select", {
-    name: props.name,
-    value,
-  });
-}
 </script>
 
 <style scoped></style>

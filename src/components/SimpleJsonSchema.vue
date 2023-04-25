@@ -10,7 +10,7 @@ import Ajv from "ajv";
 
 const props = defineProps({
   schema: {
-    type: Object as PropType<never>, // TODO: type
+    type: Object as PropType<any>, // TODO: type
     required: true,
   },
   uiSchema: {
@@ -18,20 +18,20 @@ const props = defineProps({
     required: true,
   },
   components: {
-    type: Object as PropType<never>, // TODO: type
+    type: Object as PropType<any>, // TODO: type
     required: true,
   },
   options: {
-    type: Object as PropType<never>, // TODO: type
+    type: Object as PropType<any>, // TODO: type
     required: true,
   },
   modelValue: {
-    type: Object as PropType<never>,
+    type: Object as PropType<any>,
     required: true,
   },
 });
 
-const emits = defineEmits(["update:errors", "update:model", "validate"]);
+const emits = defineEmits(["update:errors", "update:modelValue", "validate"]);
 
 const ajv = new Ajv({ strict: false });
 const validate = ajv.compile(props.schema);
@@ -46,11 +46,15 @@ const mountedComponents = computed(() => {
       {
         ...options.fieldOptions.attrs,
         modelValue: props.modelValue?.[options.fieldOptions.key],
-        onInput(event) {
-          updateModel(options.fieldOptions.key, event.target.value);
+        onInput(event: Event) {
+          const target = event.target as HTMLInputElement;
+
+          updateModel(options.fieldOptions.key, target.value);
         },
-        onSelect(event) {
-          updateModel(options.fieldOptions.key, event.target.value);
+        onSelect(event: Event) {
+          const target = event.target as HTMLInputElement;
+
+          updateModel(options.fieldOptions.key, target.value);
         },
       },
       {}
@@ -60,7 +64,7 @@ const mountedComponents = computed(() => {
   return result;
 });
 
-function updateModel(key, value) {
+function updateModel(key: string, value: any) {
   localModel.value[key] = value;
   emits("update:modelValue", localModel.value);
 

@@ -8,6 +8,9 @@
       :schema="schema"
       @update:errors="onUpdateErrors"
     />
+    <pre>
+        {{ model }}
+    </pre>
   </div>
 </template>
 
@@ -40,8 +43,8 @@ type FieldsProperties = {
 const options = {
   castToSchemaType: true,
 };
-const model = ref({});
-const errors = ref({});
+const model = ref<Record<string, string | undefined>>({});
+const errors = ref<Record<string, string | undefined>>({});
 
 // ## Computed
 
@@ -77,7 +80,7 @@ const schema = computed(() => ({
   required: [],
 }));
 const uiSchema = computed(() => {
-  const uiSchema = [];
+  const uiSchema: any[] = [];
 
   if (schema.value?.properties) {
     Object.entries(schema.value.properties)
@@ -103,7 +106,7 @@ function buildUISchemaItem(field: FieldsProperties, key: string) {
 
   return {
     component: field.enum ? "enum" : field.type,
-    modelValue: model[key],
+    modelValue: model.value[key],
     model: key,
     fieldOptions: {
       on: ["update:modelValue", "select"],
@@ -124,11 +127,17 @@ function onUpdateErrors(freshErrors: ErrorObject[] | null) {
   if (freshErrors === null) {
     errors.value = {};
   } else {
-    errors.value = freshErrors.reduce((result, currentValue) => {
-      result[currentValue.instancePath] = currentValue.message;
+    errors.value = freshErrors.reduce(
+      (
+        result: Record<string, string | undefined>,
+        currentValue: ErrorObject
+      ) => {
+        result[currentValue.instancePath] = currentValue.message;
 
-      return result;
-    }, {});
+        return result;
+      },
+      {}
+    );
   }
 }
 </script>
