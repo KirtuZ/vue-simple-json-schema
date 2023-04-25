@@ -1,16 +1,8 @@
-import * as components from "./components";
 import { App } from "vue";
+import { SimpleJsonSchema } from "./components";
 
-const SJSLibraby = {
+export default {
   install(app: App) {
-    // Auto import all components
-    for (const componentKey in components) {
-      app.use((components as any)[componentKey]);
-    }
+    app.component("SimpleJsonSchema", SimpleJsonSchema);
   },
 };
-
-export default SJSLibraby;
-
-// export all components as vue plugin
-export * from "./components";

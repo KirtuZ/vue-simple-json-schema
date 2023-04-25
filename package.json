@@ -1,13 +1,9 @@
 {
   "name": "simple-json-schema",
-  "private": true,
   "version": "0.0.1",
-  "main": "dist/simple-json-schema.umd.js",
-  "module": "dist/simple-json-schema.esm.js",
-  "unpkg": "dist/simple-json-schema.min.js",
-  "browser": {
-    "./sfc": "src/SimpleJsonSchema.vue"
-  },
+  "files": ["dist"],
+  "main": "./dist/simple-json-schema.umd.js",
+  "module": "./dist/simple-json-schema.es.js",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -20,6 +16,7 @@
     "vue": "^3.2.47"
   },
   "devDependencies": {
+    "@types/node": "^18.16.0",
     "@typescript-eslint/eslint-plugin": "^5.59.0",
     "@typescript-eslint/parser": "^5.59.0",
     "@vitejs/plugin-vue": "^4.1.0",
@@ -28,6 +25,7 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.11.0",
+    "path": "^0.12.7",
     "prettier": "^2.8.7",
     "typescript": "^5.0.2",
     "vite": "^4.3.0",
