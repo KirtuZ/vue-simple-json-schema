@@ -1,8 +1,10 @@
 import { App } from "vue";
-import { SimpleJsonSchema } from "./components";
+import { VueSimpleJsonSchema } from "./components";
 
 export default {
   install(app: App) {
-    app.component("SimpleJsonSchema", SimpleJsonSchema);
+    app.component("VueSimpleJsonSchema", VueSimpleJsonSchema);
   },
 };
+
+export { VueSimpleJsonSchema };

@@ -1,13 +1,20 @@
 {
-  "name": "simple-json-schema",
-  "version": "0.0.1",
+  "name": "vue-simple-json-schema",
+  "version": "0.0.3",
   "files": ["dist"],
-  "main": "./dist/simple-json-schema.umd.js",
-  "module": "./dist/simple-json-schema.es.js",
+  "main": "./dist/vue-simple-json-schema.umd.js",
+  "module": "./dist/vue-simple-json-schema.es.js",
   "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/vue-simple-json-schema.es.js",
+      "require": "./dist/vue-simple-json-schema.umd.js"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
+    "build:lib": "vite build && vue-tsc --emitDeclarationOnly",
     "preview": "vite preview",
     "lint:js": "eslint src --ext .ts,.vue"
   },

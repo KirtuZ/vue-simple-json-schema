@@ -7,8 +7,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
-      name: "simple-json-schema",
-      fileName: (format) => `simple-json-schema.${format}.js`,
+      name: "VueSimpleJsonSchema",
+      fileName: (format) => `vue-simple-json-schema.${format}.js`,
     },
     rollupOptions: {
       external: ["vue"],

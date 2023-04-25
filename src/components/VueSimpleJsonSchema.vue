@@ -38,6 +38,7 @@ const validate = ajv.compile(props.schema);
 const localModel = ref(props.modelValue);
 
 const mountedComponents = computed(() => {
+  console.log("build components...");
   const result: { [key: string]: VNode } = {};
 
   props.uiSchema?.forEach((options: any) => {

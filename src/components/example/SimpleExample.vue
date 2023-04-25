@@ -1,6 +1,6 @@
 <template>
   <div class="example">
-    <SimpleJsonSchema
+    <VueSimpleJsonSchema
       v-model="model"
       :options="options"
       :components="components"
@@ -20,8 +20,8 @@ import { ErrorObject } from "ajv";
 const ExampleInput = defineAsyncComponent(() => import("./ExampleInput.vue"));
 const ExampleSelect = defineAsyncComponent(() => import("./ExampleSelect.vue"));
 
-const SimpleJsonSchema = defineAsyncComponent(
-  () => import("../SimpleJsonSchema.vue")
+const VueSimpleJsonSchema = defineAsyncComponent(
+  () => import("../VueSimpleJsonSchema.vue")
 );
 
 // ## Types

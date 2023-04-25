@@ -1,3 +1,3 @@
-import SimpleJsonSchema from "./SimpleJsonSchema.vue";
+import VueSimpleJsonSchema from "./VueSimpleJsonSchema.vue";
 
-export { SimpleJsonSchema };
+export { VueSimpleJsonSchema };
