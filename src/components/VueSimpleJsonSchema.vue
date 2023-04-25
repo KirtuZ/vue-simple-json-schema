@@ -48,10 +48,13 @@ const mountedComponents = computed(() => {
         ...options.fieldOptions.attrs,
         modelValue: props.modelValue?.[options.fieldOptions.key],
         onInput(event: Event) {
-          console.log("onInput", event);
           const target = event.target as HTMLInputElement;
+          console.log("onInput", target);
 
-          updateModel(options.fieldOptions.key, target.value);
+          updateModel(
+            options.fieldOptions.key,
+            target.type === "number" ? target.valueAsNumber : target.value
+          );
         },
         onSelect(value: string | number | boolean | null) {
           console.log("onInput", value);
