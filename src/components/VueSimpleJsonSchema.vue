@@ -48,14 +48,20 @@ const mountedComponents = computed(() => {
         ...options.fieldOptions.attrs,
         modelValue: props.modelValue?.[options.fieldOptions.key],
         onInput(event: Event) {
+          console.log("onInput", event);
           const target = event.target as HTMLInputElement;
 
           updateModel(options.fieldOptions.key, target.value);
         },
-        onSelect(event: Event) {
-          const target = event.target as HTMLInputElement;
+        onSelect(value: string | number | boolean | null) {
+          console.log("onInput", value);
 
-          updateModel(options.fieldOptions.key, target.value);
+          updateModel(options.fieldOptions.key, value);
+        },
+        onUpdateModelValue(value: any) {
+          console.log("onUpdateModelValue", value);
+
+          updateModel(options.fieldOptions.key, value);
         },
       },
       {}
@@ -71,6 +77,7 @@ function updateModel(key: string, value: any) {
 
   const valid = validate(localModel.value);
   emits("validate", valid);
+  console.log("updateModel", key, value, valid, validate.errors);
   emits("update:errors", validate.errors);
 }
 </script>
